@@ -13,7 +13,8 @@ const data={
     labels:['Green','Yellow','Blue', 'Red']
 }
 
-const Chart = () => {
+const Chart = (props) => {
+    console.log(props.filteredCategory);
     const [data, setData] = useState({
         datasets: [{
             data: [10, 20, 30, 40],
@@ -38,7 +39,7 @@ const Chart = () => {
                 // console.log("Ase", datam);
                 setData({
                     datasets: [{
-                        data: [10,20,30,40],
+                        data: [props.filteredCategory,20,30,40],
                         backgroundColor: ['Green', 'Yellow', 'Blue', 'Red'],
                     }],
                     labels: label,
