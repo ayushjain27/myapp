@@ -1,8 +1,11 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react';
 import Chart from './Chart';
+import Card from './Card';
 
 const Cards = () => {
     const [data, setData] = useState([]);
+    // const [read, setRead] = useState(false);
+    // const [getCollapseProps, getToggleProps] = useCollapse({ read });
     const [categories, setCategories] = useState([]);
     const [filteredCategories, setFilteredCategories] = useState([]);
     const getDetails = async () => {
@@ -43,25 +46,17 @@ const Cards = () => {
 
     return (
         <>
-            <button onClick={getCategoryCounts} type="button" class="btn btn-primary">
-                Click
-            </button>
+            {/* <div>
+      
+      <section ></section>
+    </div> */}
             <div className="container">
                 <div className="row">
-                    {data.map((item) => {
+                    {data.map((item, index) => {
                         return (
                             <>
                                 <div className="col-3 mt-3">
-                                    <div class="card" style={{ border: '2px solid black', borderRadius: '12' }}>
-                                        <div style={{ border: '2px solid black' }}>
-                                            <img style={{ objectFit: 'contain', height: '200px' }} src={item.image} class="card-img-top" alt="..." />
-                                            <span class="badge rounded-pill bg-success">{item.category}</span>
-                                        </div>
-                                        <div class="card-body">
-                                            <p class="card-text">{item.description ? item.description.slice(0, 150) : ""}...</p>
-                                            <p class="card-title">{item.price}</p>
-                                        </div>
-                                    </div>
+                                    <Card key={index} item={item}/>                                    
                                 </div>
                             </>
                         )
@@ -71,7 +66,7 @@ const Cards = () => {
             <button style={{ position: 'fixed', bottom: '10%', right: '0' }} type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                 Analysis
             </button>
-            <Chart filteredCategories={filteredCategories[0]}/>
+            <Chart filteredCategories={filteredCategories[0]} />
         </>
     )
 }
